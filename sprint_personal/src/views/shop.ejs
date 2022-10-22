@@ -12,16 +12,31 @@
 
     
     <h1>전통주점</h1>
-   
+    <div>
+        <button type="button" id="kyunggido" onClick="location.href='Gyunggi'">경기도</button>
+    </div>
     <div>
         <% for (var i = 0; i < data.length; i++) { %>
-        <h2 class="title">주점명 : <%= data[i].이름 %></h2>
-        <p class="img">이미지 : <%= data[i].이미지 %> </p>
+        <h2 class="title">주점명 : <%= data[i].name %></h2>
+        <p class="img">주소 : <%= data[i].address %> </p>
+        <!-- <p class="img">주소 : <% if(data[i].address.includes("서울")){%><p><%=data[i].address%></p><%} %> </p> -->
+        <!-- <h2 class="SeoulTitle">서울 주점: <%= data[i].name %></h2> -->
         <% } %> 
     </div>
     
 
-    
+    <script>
+        const $kyunggido=document.querySelector("#kyunggido");
+        
+        const onClickLocal=(event)=>{
+            console.log("확인");
+
+        }
+
+        $kyunggido.addEventListener('click',onClickLocal);
+
+
+    </script>
         
       
    

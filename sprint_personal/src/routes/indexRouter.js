@@ -1,5 +1,6 @@
 'use strict';
 const express = require('express');
+const { SocketAddress } = require('net');
 const path = require('path');
 const Drink = require('../models/Drink.js');
 const Shop = require('../models/Shop.js')
@@ -14,14 +15,21 @@ module.exports = () => {
     router.get('/shop', async(req,res) => {
         try{
             Shop.find(async(에러, 결과) => {  //post 문서의 모든 데이터를 출력
-            console.log(결과);
-            res.render('shop.ejs', { data : 결과 });    
-            //db에서 가져온 결과를 posts라는 이름으로 ejs에 넣음
+            console.log(결과[0].name);
+            res.render('shop.ejs', { data : 결과 }); //db에서 가져온 결과를 posts라는 이름으로 ejs에 넣음
+            // 쿼리문으로 주소에 서울, 경기도 강원도, 제주특별자치도,.. 으로 나누고, 따로따로 저장해서 렌더링
+            // Shop.find({address:/서울/}, function(에러,서울결과){
+            // console.log("서울결과",서울결과);
+            // //     /res.render('shop.ejs',{seoul:서울결과});
+            // res.render('shop.ejs',{data:결과, seoul:서울결과});
         });
         }catch(err){
             console.log(err);
         }
-    })
+        })
+
+        
+    
             
      // 11. 실험 페이지
      router.get('/drinks/test', async(req,res) => {
@@ -110,6 +118,17 @@ module.exports = () => {
             console.log(err);
         }
     })
+    //Shop.find({address:/서울/}, function(에러,서울결과){
+    router.get('/Gyunggi',function(req,res,next){
+        //res.send('지역별');
+        try{
+            Shop.find({address:/경기/},function(에러,결과){
+            res.render('Gyunggi.ejs',{data:결과});
+            });
+        }catch(err){
+            console.log(err);
+        }
+    });
 
     router.get("/", function(req, res) {
         res.sendFile(path.join(__dirname, "/react-project/build/index.html"));
