@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전통주 취향 테스트</title>
+   <link rel="stylesheet" href="../public/detail.css">
+</head>
+<body>
+
+    
+  
+
+   
+   
+ 
+  
+    
+
+<div id="result">
+  
+    <div class="resultTitle">
+
+    </div>
+    <div id="resultImg">
+    <!-- <img> -->
+    </div>
+    <form action="/drinks/list:<%= data.id %>" method="get"></form>
+    <div class="resultContent">
+        
+            <h2 class="title">전통주명 : <%= data.전통주명 %></h2>
+            <p class="price">가격 : <%= data.가격 %></p>
+            <p class="ml">용량 : <%= data.용량 %></p>
+            <p class="drink">주종 : <%= data.주종 %></p>
+            <p class="alcohol">도수 : <%= data.도수 %></p>
+            <p class="dan">단맛 : <%= data.단맛 %></p>
+            <p class="shin">신맛 : <%= data.신맛 %></p>
+            <p class="body">바디감 : <%= data.바디감 %></p>
+            <p class="fresh">청량감 : <%= data.청량감 %></p>
+            <p class="food">잘 어울리는 음식 : <%= data.잘어울리는음식 %></p>
+            <p class="material">주원료 : <%= data.주원료 %></p>
+            <p class="cop">제조사 : <%= data.제조사 %></p>
+            <img class="img" src="/uploads/images/<%= data.id %>.BMP" />
+    </div>
+    </form>
+    
+    
+    
+</div>
+    
+
+</body>
+</html>

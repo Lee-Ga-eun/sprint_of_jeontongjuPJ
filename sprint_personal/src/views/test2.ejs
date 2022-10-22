@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전통주 취향 테스트</title>
+   <link rel="stylesheet" href="../public/test2.css">
+</head>
+<body>
+   
+    <div id="title">
+        <h1>추천 전통주 찾기</h1>
+        <div>
+        <img src="../uploads/home.PNG" alt="mainImg" class="imgs">
+        </div>
+        <p>나에게 맞는 술을 찾아보세요</p>
+
+        <button onclick="js:filter()">전통주 찾기</button>
+        
+    </div>  
+ 
+    <div id="content">
+        
+        <h1 id="q">
+            <h1>전통주 찾기</h1>
+            <form action="/drinks/test" method="get">
+            <div>
+                가격
+                <select name="q1" id="q1">
+                    <option value="1">비싸도 좋아요</option>
+                    <option value="2">저렴하게 먹을래요</option>
+                </select>
+            </div>    
+            <div>
+                도수
+                <select name="q2" id="q2">
+                  <option value="1">라이트하게 먹어요</option>
+                  <option value="2">쎈 술이 좋아요</option>
+              </select>
+            </div>
+            <div>
+                주종
+                <select name="q3" id="q3">
+                    <option value="탁주">탁주</option>
+                    <option value="약주">약주</option>
+                    <option value="과실주">과실주</option>
+                    <option value="증류주">증류주</option>
+                    <option value="기타주류">기타주류</option>
+                </select>
+            </div>    
+            <div>
+                단맛
+                  <select name="q4" id="q4">
+                    <option value="1">너무 달면 별로..</option>
+                    <option value="2">달달한게 좋아요</option>
+                </select>
+            </div>
+            <div>
+                신맛
+                <select name="q5" id="q5">
+                  <option value="1">신맛을 잘 못먹어요</option>
+                  <option value="2">신맛을 즐겨요</option>
+              </select>
+            </div>
+            <div>
+                바디감
+              <select name="q6" id="q6">
+                <option value="1">소프트한게 좋아요</option>
+                <option value="2">묵직한게 좋아요</option>
+              </select>
+            </div>
+            <div>
+                청량감
+              <select name="q7" id="q7">
+                <option value="1">화끈한 느낌이 좋아요</option>
+                <option value="2">시원한 느낌이 좋아요</option>
+              </select>
+            </div>
+                <input type="submit" onclick="Check()" value="검사완료">
+        </h1>
+
+        <h3 id="a">
+            
+        </h3>
+    </div>
+ 
+   
+   
+
+    
+  </form>
+
+<div id="result">
+  
+    <div class="resultTitle">
+
+    </div>
+    <div id="resultImg">
+    <!-- <img> -->
+    </div>
+    <div class="resultContent">
+        <% for (var i = 0; i < posts.length ; i ++) { %>
+            <h2 class="title"><a href="list/<%= posts[i].id %>"><%= posts[i].전통주명 %></a></h2>
+            <img class="img" src="../uploads/images/<%= posts[i].id %>.BMP" />
+            
+        <% } %> 
+    </div>
+    
+</div>
+    
+    <script charset="utf-8">
+        const process = 1;
+        const select = [0, 0, 0, 0, 0, 0, 0, 0];
+        const patterns = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'];
+        const result = document.querySelector("#result");
+        const content = document.querySelector("#content");
+        function filter(){
+            title.style.WebkitAnimation = "fadeOut 1s";
+            title.style.animation = "fadeOut 1s";
+            setTimeout( ()=>{
+             content.style.WebkitAnimation = "fadeIn 1s";
+             content.style.animation = "fadeIn 1s";
+             setTimeout( ()=>{
+                 title.style.display = "none";
+                 content.style.display = "block";
+             }, 450)
+             
+            }, 450);
+         }   
+
+    </script>
+</body>
+</html>
