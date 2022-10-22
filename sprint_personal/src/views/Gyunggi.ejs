@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <link rel="stylesheet" href="../public/shop.css">
+</head>
+<body>
+
+
+    
+    <h1>경기도</h1>
+
+
+    <div>
+        <button type="button" id="kyunggido" onClick="location.href='shop'">돌아가기</button>
+    </div>
+    <div>
+        <% for (var i = 0; i < data.length; i++) { %>
+        <h2 class="title">주점명 : <% if(data[i].address.includes("경기")){%><p><%=data[i].name%></p><%} %></h2>
+        <p class="img">주소 : <% if(data[i].address.includes("경기")){%><p><%=data[i].address%></p><%} %> </p>
+        <!-- <h2 class="SeoulTitle">서울 주점: <%= data[i].name %></h2> -->
+        <% } %> 
+    </div>
+
+</body>
+</html>
