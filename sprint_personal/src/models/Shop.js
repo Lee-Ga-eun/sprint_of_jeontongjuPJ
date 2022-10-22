@@ -5,21 +5,21 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema(
     {
         
-        이름 : {
+        name : {
             type : String,
             required : [true, "주점명 필수"],
-            unique : [true, "주점명 중복 안됨"],
+            //unique : [true, "주점명 중복 안됨"],
         },
-        전화번호 : {
+        phone : {
             type : String,
         },
-        주소 : {
+        address : {
             type : String,
         },
-        영업시간 : {
+        time : {
             type : String,
         },
-        메뉴 : {
+        menu : {
             type : String,
         },
         주류 : {
