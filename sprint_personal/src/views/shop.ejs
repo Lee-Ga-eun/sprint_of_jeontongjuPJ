@@ -12,9 +12,16 @@
 
     
     <h1>전통주점</h1>
+
+
     <div>
         <button type="button" id="kyunggido" onClick="location.href='Gyunggi'">경기도</button>
     </div>
+
+    <div>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxLbkbRe5p5LhCs7ss4mKkztleD46lGtyypw&usqp=CAU" alt='경기도' onClick="location.href='Gyunggi'">
+    </div>
+
     <div>
         <% for (var i = 0; i < data.length; i++) { %>
         <h2 class="title">주점명 : <%= data[i].name %></h2>
