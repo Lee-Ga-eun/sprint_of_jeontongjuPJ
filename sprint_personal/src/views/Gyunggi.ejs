@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
    <link rel="stylesheet" href="../public/shop.css">
+   <!-- 페이징 테스트 -->
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+   <!--  -->
 </head>
 <body>
 
@@ -15,7 +18,8 @@
 
 
     <div>
-        <button type="button" id="kyunggido" onClick="location.href='shop'">돌아가기</button>
+        <!-- http://localhost:3000/stores/test 로 돌아가기 -->
+        <button type="button" id="kyunggido" onClick="location.href='test'">전체보기</button> 
     </div>
     <div>
         <% for (var i = 0; i < data.length; i++) { %>
@@ -25,5 +29,9 @@
         <% } %> 
     </div>
 
+
+    <script>
+
+    </script>
 </body>
 </html>
