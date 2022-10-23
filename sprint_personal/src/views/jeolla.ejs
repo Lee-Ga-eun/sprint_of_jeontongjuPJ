@@ -1,37 +1,70 @@
+HTMLResult Skip Results Iframe
+EDIT ON
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-   <link rel="stylesheet" href="../public/shop.css">
-   <!-- 페이징 테스트 -->
-   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-   <!--  -->
+    <title>pagination example</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css"/>
 </head>
 <body>
 
+<div>
+    <section>
+        <div id="data-container">
 
-    
-    <h1>전라남도&전라북도 주점</h1>
+        </div>
+        
+        <div id="pagination">
+            <div id="takit">
+                <li>데이타</li>
+                <li><%= data %></li>
+                <% for (var i = 0; i < data.length; i++) { %>
+                    <p><h3><class="title">주점명 : <%= data[i].name %> </h3></p>
+                    <p class="img">주소 : 주소 : <%= data[i].address %> </p>
+                    <!-- <h2 class="SeoulTitle">서울 주점: <%= data[i].name %></h2> --><% } %> 
+            </div>
+        </div>
+    </section>
+</div>
 
-
-    <div>
-        <!-- http://localhost:3000/stores/test 로 돌아가기 -->
-        <button type="button" id="jeolla" onClick="location.href='test'">전체보기</button> 
+    <div id="takit_">
+        <!-- <%= data %> -->
+        
     </div>
-    <div>
-        <% for (var i = 0; i < data.length; i++) { %>
-        <p><h3><class="title">주점명 : <%= data[i].name %> </h3></p>
-        <p class="img">주소 : 주소 : <%= data[i].address %> </p>
-        <!-- <h2 class="SeoulTitle">서울 주점: <%= data[i].name %></h2> -->
-        <% } %> 
-    </div>
 
 
-    <script>
 
-    </script>
+<script>
+    //console.log(data);
+    //console.log("이게데이터",document.getElementById('#takit_'));
+    $takit=document.getElementById('takit_').value;
+    console.log($takit)
+    // 여기로 data를 가져오기만 하면 된다.
+    $dattaa=[{name:'헬로'},{address:'헬로주소'}]
+
+    $(function () {
+        let container = $('#pagination');
+        container.pagination({
+            dataSource:$dattaa,
+            
+            callback: function (data, pagination) {
+                var dataHtml = '<ul>';
+
+                $.each(data, function (index, item) {
+                    dataHtml += '<li>' + item.name + '</li>';
+                });
+
+                dataHtml += '</ul>';
+
+                $("#data-container").html(dataHtml);
+            }
+        })
+    })
+</script>
 </body>
 </html>

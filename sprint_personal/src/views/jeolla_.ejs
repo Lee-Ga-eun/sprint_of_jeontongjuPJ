@@ -14,17 +14,17 @@
 
 
     
-    <h1>제주도 전통주점</h1>
+    <h1>전라남도&전라북도 주점</h1>
 
 
     <div>
         <!-- http://localhost:3000/stores/test 로 돌아가기 -->
-        <button type="button" id="jeju" onClick="location.href='test'">전체보기</button> 
+        <button type="button" id="jeolla" onClick="location.href='test'">전체보기</button> 
     </div>
     <div>
         <% for (var i = 0; i < data.length; i++) { %>
         <p><h3><class="title">주점명 : <%= data[i].name %> </h3></p>
-        <p class="img">주소 : <%= data[i].address %> </p>
+        <p class="img">주소 : 주소 : <%= data[i].address %> </p>
         <!-- <h2 class="SeoulTitle">서울 주점: <%= data[i].name %></h2> -->
         <% } %> 
     </div>
