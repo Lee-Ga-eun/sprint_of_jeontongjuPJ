@@ -172,6 +172,58 @@ module.exports = () => {
         }
     });
 
+    //부산
+    router.get('/stores/busan',function(req,res,next){  // 실제 연결:http://localhost:3000/stores/test
+        //res.send('지역별');
+        try{
+            Shop.find({address:/부산/},function(에러,결과){
+            res.render('busan.ejs',{data:결과});
+            });
+        }catch(err){
+            console.log(err);
+        }
+    });
+
+    //충청도
+    router.get('/stores/chungcheong',function(req,res,next){  // 실제 연결:http://localhost:3000/stores/test
+        //res.send('지역별');
+        try{
+            Shop.find({$or: [{address:/충남/},{address:/대전/}]},function(에러,결과){ //서울 경기대로 제거
+            //Shop.find({address:/경기/},function(에러,결과){
+            console.log(결과);
+            res.render('chungcheong.ejs',{data:결과});
+            });
+        }catch(err){
+            console.log(err);
+        }
+    });
+    //인천
+    router.get('/stores/Incheon',function(req,res,next){  // 실제 연결:http://localhost:3000/stores/test
+        //res.send('지역별');
+        try{
+            Shop.find({address:/인천/},function(에러,결과){ //서울 경기대로 제거
+            //Shop.find({address:/경기/},function(에러,결과){
+            console.log(결과);
+            res.render('Incheon.ejs',{data:결과});
+            });
+        }catch(err){
+            console.log(err);
+        }
+    });
+
+    //경상도
+    router.get('/stores/gyeongsang',function(req,res,next){  // 실제 연결:http://localhost:3000/stores/test
+        //res.send('지역별');
+        try{
+            Shop.find({$or: [{address:/경남/},{address:/경북/},{address:/대구/},{address:/(본점)대구/}]},function(에러,결과){ //서울 경기대로 제거
+            //Shop.find({address:/경기/},function(에러,결과){
+            console.log(결과);
+            res.render('gyeongsang.ejs',{data:결과});
+            });
+        }catch(err){
+            console.log(err);
+        }
+    });
 
     router.get("/", function(req, res) {
         res.sendFile(path.join(__dirname, "/react-project/build/index.html"));
