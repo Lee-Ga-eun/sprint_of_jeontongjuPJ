@@ -12,7 +12,7 @@ module.exports = () => {
         res.send('hello world');
     });
    // 8. 전국 전통주점 페이지
-    router.get('/shop', async(req,res) => {
+    router.get('/stores/test', async(req,res) => {
         try{
             Shop.find(async(에러, 결과) => {  //post 문서의 모든 데이터를 출력
             console.log(결과[0].name);
@@ -119,16 +119,47 @@ module.exports = () => {
         }
     })
     //Shop.find({address:/서울/}, function(에러,서울결과){
-    router.get('/Gyunggi',function(req,res,next){
+    router.get('/stores/Gyunggi',function(req,res,next){  // 실제 연결:http://localhost:3000/stores/test
         //res.send('지역별');
         try{
-            Shop.find({address:/경기/},function(에러,결과){
+            Shop.find({$and: [{address:/경기/},{name:{$ne:"물뛴다"}}]},function(에러,결과){ //서울 경기대로 제거
+            //Shop.find({address:/경기/},function(에러,결과){
+            console.log(결과);
             res.render('Gyunggi.ejs',{data:결과});
             });
         }catch(err){
             console.log(err);
         }
     });
+    //Shop.find({$and: [{address:/서울/},{address:{$ne:/경기/}}]},function(에러,결과){
+
+    //console.log(Shop.find({$and: [{address:/서울/},{address:{$ne:/경기대로/}}]}));
+    // 서울 처리하기
+    router.get('/stores/Seoul',function(req,res,next){  // 실제 연결:http://localhost:3000/stores/test
+        //res.send('지역별');
+        try{
+            Shop.find({address:/서울/},function(에러,결과){
+            res.render('seoul.ejs',{data:결과});
+            });
+        }catch(err){
+            console.log(err);
+        }
+    });
+
+    //전라도
+    router.get('/stores/jeolla',function(req,res,next){  // 실제 연결:http://localhost:3000/stores/test
+        //res.send('지역별');
+        try{
+            Shop.find({$or: [{address:/전남/},{address:/전북/}]},function(에러,결과){ //서울 경기대로 제거
+            //Shop.find({address:/경기/},function(에러,결과){
+            console.log(결과);
+            res.render('jeolla.ejs',{data:결과});
+            });
+        }catch(err){
+            console.log(err);
+        }
+    });
+
 
     router.get("/", function(req, res) {
         res.sendFile(path.join(__dirname, "/react-project/build/index.html"));
