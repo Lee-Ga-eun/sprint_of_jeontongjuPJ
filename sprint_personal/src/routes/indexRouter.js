@@ -160,6 +160,18 @@ module.exports = () => {
         }
     });
 
+    //제주도
+    router.get('/stores/jeju',function(req,res,next){  // 실제 연결:http://localhost:3000/stores/test
+        //res.send('지역별');
+        try{
+            Shop.find({address:/제주/},function(에러,결과){
+            res.render('jeju.ejs',{data:결과});
+            });
+        }catch(err){
+            console.log(err);
+        }
+    });
+
 
     router.get("/", function(req, res) {
         res.sendFile(path.join(__dirname, "/react-project/build/index.html"));
